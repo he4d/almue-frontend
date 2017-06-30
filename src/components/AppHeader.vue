@@ -3,14 +3,10 @@
     <div class="container">
       <div class="nav-left">
         <router-link to="/" exact class="nav-item is-brand">
-          <img v-if="home" src="../assets/logo.png" alt="Almue">
-          <img v-else src="../assets/logo.png" alt="Almue">
+          <img src="../assets/logo.png" alt="Almue">
         </router-link>
-      </div>
-      <div class="nav-center">
-        <a class="nav-item" href="https://github.com/he4d/almue" target="_blank">
-          <b-icon pack="fa" icon="github"></b-icon>
-        </a>
+        <router-link to="/control/shutters" exact class="nav-item">Shutters</router-link>
+        <router-link to="/control/lightings" exact class="nav-item">Lightings</router-link>
       </div>
 
       <span class="nav-toggle" :class="{ 'is-active': isMenuActive }" @click="isMenuActive = !isMenuActive">
@@ -20,9 +16,10 @@
       </span>
 
       <div class="nav-right nav-menu" :class="{ 'is-active': isMenuActive }">
-        <router-link to="/" exact class="nav-item">Home</router-link>
-        <router-link to="/control" exact class="nav-item">Control</router-link>
-        <router-link to="/manage" exact class="nav-item">Manage</router-link>
+        <router-link to="/manage/floors" exact class="nav-item">Floors</router-link>
+        <router-link to="/manage/server" exact class="nav-item">Server</router-link>
+        <router-link to="/log" exact class="nav-item">Log</router-link>
+        <router-link to="/docs" exact class="nav-item">Documentation</router-link>
       </div>
     </div>
   </header>
