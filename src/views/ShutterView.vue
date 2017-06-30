@@ -1,14 +1,20 @@
 <template>
   <div id="shutter-view">
     <div v-if="floors.length !== 0">
+      <div class="content has-text-centered">
+        <h1>Shutters</h1>
+      </div>
       <section class="section">
         <b-tabs class="block" position="is-centered">
           <b-tab-item v-for="floor in floors" v-bind:key="floor.id" :label="floor.description">
             <section class="section">
-              <div class="columns is-multiline level">
+              <div class="columns is-multiline level" v-if="floor.shutters === undefined ? false : floor.shutters.length > 0">
                 <div class="column is-4 level-item" v-for="shutter in floor.shutters" v-bind:key="shutter.id">
                   <shutter-card :shutter="shutter" v-on:delete="confirmDelete(shutter)" v-on:edit="openModalEdit(shutter)"></shutter-card>
                 </div>
+              </div>
+              <div class="content has-text-centered" v-else>
+                <h1>No shutters on this floor</h1>
               </div>
             </section>
           </b-tab-item>

@@ -63,7 +63,6 @@ export default {
     return {
       hasError: false,
       errorMsg: '',
-      testdate: '',
       openTimeString: this.shutter.openTime,
       closeTimeString: this.shutter.closeTime
     }

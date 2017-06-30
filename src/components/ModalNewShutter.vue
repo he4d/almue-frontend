@@ -63,7 +63,6 @@ export default {
     return {
       hasError: false,
       errorMsg: '',
-      testdate: '',
       openTimeString: '00:00',
       closeTimeString: '00:00',
       shutter: {

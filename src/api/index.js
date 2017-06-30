@@ -35,6 +35,14 @@ export function deleteLightingById (id) {
   return instance.delete(`lightings/${id}`)
 }
 
+export function updateFloor (floor) {
+  return instance.put(`floors/${floor.id}`, floor)
+}
+
+export function createFloor (floor) {
+  return instance.post('floors', floor)
+}
+
 export function updateShutter (shutter) {
   shutter.openPin = Number(shutter.openPin)
   shutter.closePin = Number(shutter.closePin)
@@ -46,5 +54,9 @@ export function createShutter (shutter) {
   shutter.openPin = Number(shutter.openPin)
   shutter.closePin = Number(shutter.closePin)
   shutter.completeWayInSeconds = Number(shutter.completeWayInSeconds)
-  return instance.post(`floors/${shutter.floorId}/shutters`, shutter)
+  return instance.post('shutters', shutter)
+}
+
+export function deleteFloorById (floorId) {
+  return instance.delete(`floors/${floorId}`)
 }
