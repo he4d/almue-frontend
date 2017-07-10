@@ -37,7 +37,7 @@
         </b-field>
         <b-field label="Floor">
           <b-select placeholder="Select a floor" v-model="shutter.floorId" ref="floorField" required>
-            <option v-for="floor in floors" :value="floor.id" :key="floor.description">
+            <option v-for="floor in allFloors" :value="floor.id" :key="floor.description">
               {{ floor.description }}
             </option>
           </b-select>
@@ -66,11 +66,12 @@ export default {
       openTimeString: '00:00',
       closeTimeString: '00:00',
       shutter: {
-        description: ''
+        description: '',
+        floorId: this.currentFloorId
       }
     }
   },
-  props: ['floors'],
+  props: ['allFloors', 'currentFloorId'],
   components: {
     Datepicker
   },

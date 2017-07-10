@@ -17,18 +17,18 @@
                 <h1>No shutters on this floor</h1>
               </div>
             </section>
+            <section class="section">
+              <div class="content has-text-centered">
+                <a class="button is-medium is-primary" @click="openModalNew(floor.id)">
+                  <span class="icon is-small">
+                    <i class="fa fa-plus"></i>
+                  </span>
+                  <span>Add new shutter</span>
+                </a>
+              </div>
+            </section>
           </b-tab-item>
         </b-tabs>
-      </section>
-      <section class="section">
-        <div class="content has-text-centered">
-          <a class="button is-medium is-primary" @click="openModalNew()">
-            <span class="icon is-small">
-              <i class="fa fa-plus"></i>
-            </span>
-            <span>Add new shutter</span>
-          </a>
-        </div>
       </section>
     </div>
     <div v-else-if="loaded">
@@ -98,12 +98,13 @@ export default {
         }
       })
     },
-    openModalNew () {
+    openModalNew (floorId) {
       this.$modal.open({
         component: ModalNewShutter,
         width: 400,
         props: {
-          floors: this.floors
+          allFloors: this.floors,
+          currentFloorId: floorId
         }
       })
     },
