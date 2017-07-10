@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView'
 import ShutterView from '@/views/ShutterView'
 import LightingView from '@/views/LightingView'
 import FloorView from '@/views/FloorView'
+import LogView from '@/views/LogView'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/manage/floors',
       name: 'Floors',
       component: FloorView
+    },
+    {
+      path: '/manage/logfile',
+      name: 'Logfile',
+      component: LogView
     }
   ]
 })

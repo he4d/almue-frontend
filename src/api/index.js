@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-function getBaseUrl () {
+export function getBaseUrl () {
   if (process.env.NODE_ENV === 'development') {
     return 'http://localhost:8000/api/v1/'
   } else {

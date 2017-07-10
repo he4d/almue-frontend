@@ -12,7 +12,13 @@
     </header>
     <div class="card-content">
       <div class="content">
-        Current Status: {{ shutter.deviceStatus }}
+        Current Status:
+        <span class="tag is-success" v-if="shutter.deviceStatus !== 'stopped'">
+          {{ shutter.deviceStatus }}
+        </span>
+        <span class="tag" v-else>
+          {{ shutter.deviceStatus }}
+        </span>
         <br> Jobs enabled: {{ shutter.jobsEnabled }}
         <br> Open time: {{ getLocalTimeString(shutter.openTime) }}
         <br> Close time: {{ getLocalTimeString(shutter.closeTime) }}

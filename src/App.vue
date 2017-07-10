@@ -11,7 +11,7 @@
           <router-view></router-view>
         </div>
       </div>
-      <div class="hero-footer">
+      <div class="hero-foot">
         <app-footer></app-footer>
       </div>
     </section>

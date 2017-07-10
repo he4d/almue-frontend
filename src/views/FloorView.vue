@@ -1,6 +1,5 @@
 <template>
   <div id="floor-view">
-    <div v-if="floors.length !== 0">
       <div class="content has-text-centered">
         <h1>Floors</h1>
       </div>
@@ -21,7 +20,6 @@
           </a>
         </div>
       </section>
-    </div>
   </div>
 </template>
 

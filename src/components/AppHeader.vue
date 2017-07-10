@@ -18,7 +18,7 @@
       <div class="nav-right nav-menu" :class="{ 'is-active': isMenuActive }">
         <router-link to="/manage/floors" exact class="nav-item">Floors</router-link>
         <router-link to="/manage/server" exact class="nav-item">Server</router-link>
-        <router-link to="/log" exact class="nav-item">Log</router-link>
+        <router-link to="/manage/logfile" exact class="nav-item">Log</router-link>
         <router-link to="/docs" exact class="nav-item">Documentation</router-link>
       </div>
     </div>
