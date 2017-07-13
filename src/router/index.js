@@ -5,6 +5,7 @@ import ShutterView from '@/views/ShutterView'
 import LightingView from '@/views/LightingView'
 import FloorView from '@/views/FloorView'
 import LogView from '@/views/LogView'
+import ManageServerView from '@/views/ManageServerView'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/manage/logfile',
       name: 'Logfile',
       component: LogView
+    },
+    {
+      path: '/manage/server',
+      name: 'Manage Server',
+      component: ManageServerView
     }
   ]
 })
