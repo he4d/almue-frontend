@@ -25,15 +25,15 @@
       </div>
     </div>
     <footer class="card-footer">
-      <a class="card-footer-item button" @click="controlShutter('open')">Open</a>
-      <a class="card-footer-item button" @click="controlShutter('stop')">Stop</a>
-      <a class="card-footer-item button" @click="controlShutter('close')">Close</a>
+      <a class="card-footer-item" @click="controlShutter('open')">Open</a>
+      <a class="card-footer-item" @click="controlShutter('stop')">Stop</a>
+      <a class="card-footer-item" @click="controlShutter('close')">Close</a>
     </footer>
     <footer class="card-footer">
-      <a class="card-footer-item button" @click="$emit('edit')">
+      <a class="card-footer-item" @click="$emit('edit')">
         <small>Edit</small>
       </a>
-      <a class="card-footer-item button" @click="$emit('delete')">
+      <a class="card-footer-item" @click="$emit('delete')">
         <small>Delete</small>
       </a>
     </footer>

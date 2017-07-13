@@ -1,6 +1,9 @@
 <template>
   <div id="lighting-view">
     <div v-if="floors.length !== 0">
+      <div class="content has-text-centered">
+        <h1>Lightings</h1>
+      </div>
       <section class="section">
         <b-tabs class="block" position="is-centered">
           <b-tab-item v-for="floor in floors" v-bind:key="floor.id" :label="floor.description">
@@ -11,18 +14,18 @@
                 </div>
               </div>
             </section>
+            <section class="section">
+              <div class="content has-text-centered">
+                <a class="button is-medium is-primary" @click="openModalNew(floor.id)">
+                  <span class="icon is-small">
+                    <i class="fa fa-plus"></i>
+                  </span>
+                  <span>Add new lighting</span>
+                </a>
+              </div>
+            </section>
           </b-tab-item>
         </b-tabs>
-      </section>
-      <section class="section">
-        <div class="content has-text-centered">
-          <a class="button is-medium is-primary">
-            <span class="icon is-small">
-              <i class="fa fa-plus"></i>
-            </span>
-            <span>Add new lighting</span>
-          </a>
-        </div>
       </section>
     </div>
     <div v-else-if="loaded">
@@ -88,6 +91,17 @@ export default {
         width: 400,
         props: {
           lighting: deepClone
+        }
+      })
+    },
+    openModalNew (floorId) {
+      console.log('clidked')
+      this.$modal.open({
+        component: ModalNewLighting,
+        width: 400,
+        props: {
+          allFloors: this.floors,
+          currentFloorId: floorId
         }
       })
     },

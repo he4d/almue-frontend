@@ -57,6 +57,11 @@ export function createShutter (shutter) {
   return instance.post('shutters', shutter)
 }
 
+export function createLighting (lighting) {
+  lighting.switchPin = Number(lighting.switchPin)
+  return instance.post('lightings', lighting)
+}
+
 export function deleteFloorById (floorId) {
   return instance.delete(`floors/${floorId}`)
 }
