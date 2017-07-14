@@ -8,10 +8,13 @@
         <b-tabs class="block" position="is-centered">
           <b-tab-item v-for="floor in floors" v-bind:key="floor.id" :label="floor.description">
             <section class="section">
-              <div class="columns">
+              <div class="columns is-multiline level" v-if="floor.lightings === undefined ? false : floor.lightings.length > 0">
                 <div class="column" v-for="lighting in floor.lightings" v-bind:key="lighting.id">
                   <lighting-card :lighting="lighting" v-on:delete="confirmDelete(lighting)" v-on:edit="openModalEdit(lighting)"></lighting-card>
                 </div>
+              </div>
+              <div class="content has-text-centered" v-else>
+                <h1>No Lightings on this floor</h1>
               </div>
             </section>
             <section class="section">
