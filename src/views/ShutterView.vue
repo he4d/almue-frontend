@@ -67,7 +67,7 @@ export default {
     this.refreshData()
     this.refreshIntervalId = setInterval(() => {
       this.refreshData()
-    }, 2000)
+    }, 1000)
   },
   destroyed () {
     clearInterval(this.refreshIntervalId)

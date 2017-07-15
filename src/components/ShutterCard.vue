@@ -19,6 +19,7 @@
         <span class="tag" v-else>
           {{ shutter.deviceStatus }}
         </span>
+        <br> Opening: {{ shutter.openingInPrc }}%
         <br> Jobs enabled: {{ shutter.jobsEnabled }}
         <br> Open time: {{ getLocalTimeString(shutter.openTime) }}
         <br> Close time: {{ getLocalTimeString(shutter.closeTime) }}
