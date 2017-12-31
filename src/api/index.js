@@ -43,6 +43,11 @@ export function createFloor (floor) {
   return instance.post('floors', floor)
 }
 
+export function updateLighting (shutter) {
+  // TODO: spec
+  return true
+}
+
 export function updateShutter (shutter) {
   shutter.openPin = Number(shutter.openPin)
   shutter.closePin = Number(shutter.closePin)
