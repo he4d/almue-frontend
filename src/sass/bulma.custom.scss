@@ -1,0 +1,49 @@
+// bulma
+// overrights and changes
+
+// include custom mixins and globals
+@import "globals/media-queries";
+
+
+//
+// container / sections
+// fix tabs flexbox behavior
+.container {
+  min-width: 320px;
+}
+
+@include mq(mobile) {
+  .section {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+}
+
+//
+// tabs
+.b-tabs {
+  .tabs {
+    li {
+      a,
+      span {
+        word-break: break-all;
+      }
+      span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 8em;
+      }
+    }
+  }
+}
+
+//
+// cards
+.card {
+  .card-header {
+    .card-header-title {
+      word-break: break-all;
+    }
+  }
+}

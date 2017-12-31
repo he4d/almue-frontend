@@ -1,0 +1,89 @@
+//////////
+// mq media Queries
+// https://gist.github.com/benfrain/2510308
+// https://benfrain.com/inline-or-combined-media-queries-in-sass-fight/
+// https://github.com/sass-mq/sass-mq
+
+
+// bulma defaults
+//
+//
+// source: https://github.com/jgthms/bulma/blob/master/sass/utilities/initial-variables.sass#L46,L57
+//
+// use bulma default variables to map mq mixin in scss instead of sass
+// Responsiveness
+//
+// // The container horizontal gap, which acts as the offset for breakpoints
+// $gap: 32px !default
+// // 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+// $tablet: 769px !default
+// // 960px container + 4rem
+// $desktop: 960px + (2 * $gap) !default
+// // 1152px container + 4rem
+// $widescreen: 1152px + (2 * $gap) !default
+// // 1344px container + 4rem
+// $fullhd: 1344px + (2 * $gap) !default
+
+// define breakpoint screen-width
+$screen-mobile: 320px;
+$screen-mobile-min: $screen-mobile;
+
+$screen-tablet: $tablet;
+$screen-tablet-min: $screen-tablet;
+
+$screen-desktop: $desktop;
+$screen-desktop-min: $screen-desktop;
+
+$screen-large-desktop: $widescreen;
+$screen-large-desktop-min: $screen-large-desktop;
+
+//$screen-small-mobile-max: ($screen-small-mobile-min - 1);
+$screen-mobile-max: ($screen-tablet-min - 1);
+$screen-tablet-max: ($screen-desktop-min - 1);
+$screen-desktop-max: ($screen-large-desktop-min - 1);
+
+@mixin mq($breakpoint, $type: "screen", $extended: "false") {
+
+  $default-type: "all";
+  $query: $default-type;
+
+  @if $type != $default-type {
+    $query: $type;
+  }
+
+  @if $breakpoint == "large-desktop" {
+    $query: $query + " and (min-width: " + $screen-large-desktop-min + ")";
+  } @else if $breakpoint == "desktop" {
+    $query: $query + " and (min-width: " + $screen-desktop-min + ") and (max-width: " + $screen-desktop-max + ")";
+  } @else if $breakpoint == "tablet" {
+    $query: $query + " and (min-width: " + $screen-tablet-min + ") and (max-width: " + $screen-tablet-max + ")";
+  } @else if $breakpoint == "tablet-and-desktop" {
+    $query: $query + " and (min-width: " + $screen-tablet-min + ") and (max-width: " + $screen-desktop-max + ")";
+  } @else if $breakpoint == "mobile" {
+    $query: $query + " and (max-width: " + $screen-mobile-max + ")";
+  } @else if $breakpoint == "small-mobile" {
+    $query: $query + " and (max-width: " + $screen-small-mobile-max + ")";
+  } @else if $breakpoint == "mobile-and-tablet" {
+    $query: $query + " and (max-width: " + $screen-tablet-max + ")";
+  } @else if $breakpoint == "mobile-and-tablet-and-desktop" {
+    $query: $query + " and (max-width: " + $screen-desktop-max + ")";
+  } @else if $breakpoint == "desktop-and-large-desktop" {
+    $query: $query + " and (min-width: " + $screen-desktop-min + ")";
+  } @else if $breakpoint == "tablet-and-desktop-and-large-desktop" {
+    $query: $query + " and (min-width: " + $screen-tablet-min + ")";
+  }
+
+  @if $extended == "false" {
+    @media #{$query} {
+      @at-root & {
+        @content;
+      }
+    }
+  } @else {
+    @media #{$query} {
+      @at-root & {
+        @content;
+      }
+    }
+  }
+}
