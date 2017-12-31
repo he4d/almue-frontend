@@ -2,16 +2,16 @@
   <div class="modal-card">
     <form action="">
       <header class="modal-card-head">
-        <h3 class="modal-card-title">Edit shutter</h3>
+        <h3 class="modal-card-title">Edit Lighting</h3>
       </header>
       <section class="modal-card-body">
         <b-field label="Description">
-          <b-input type="text" v-model="shutter.description" placeholder="Description of the shutter" required>
+          <b-input type="text" v-model="lighting.description" placeholder="Description of the shutter" required>
           </b-input>
         </b-field>
 
         <b-field label="Open pin">
-          <b-input type="number" v-model="shutter.openPin" placeholder="The gpio pin number" required>
+          <b-input type="number" v-model="lighting.openPin" placeholder="The gpio pin number" required>
           </b-input>
         </b-field>
 
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { updateShutter } from '@/api'
+import { updateLighting } from '@/api'
 
 export default {
   data () {
@@ -41,7 +41,7 @@ export default {
   props: ['shutter'],
   methods: {
     saveClicked () {
-      updateShutter(this.shutter).then((res) => {
+      updateLighting(this.lighting).then((res) => {
         this.errorMsg = ''
         this.hasError = false
         this.$emit('close')

@@ -1,35 +1,51 @@
 <template>
   <div class="card">
     <header class="card-header">
-      <h3 class="card-header-title">
-        {{ lighting.description }}
-      </h3>
+      <div class="card-header-title">
+        <div class="dropdown">
+          <div class="dropdown-trigger">
+            <a class="button is-text" aria-haspopup="true" :aria-controls="createDropdownId()" v-on:click="toggleDropdown">
+                <span class="fa fa-angle-down"></span>
+                <span class="sr-only">Menu</span>
+            </a>
+          </div>
+          <div class="dropdown-menu" :id="createDropdownId()" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item "@click="$emit('delete')">
+                <span class="fa fa-times"></span>
+                <span>Delete</span>
+              </a>
+              <a class="dropdown-item" @click="$emit('edit')">
+                <span class="fa fa-pencil"></span>
+                <span>Edit</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <h3>{{ lighting.description }}</h3>
+      </div>
       <p class="card-header-icon">
         <span class="icon">
-          <i class="fa fa-bars"></i>
+          <i class="fa fa-lightbulb-o"></i>
         </span>
       </p>
     </header>
     <div class="card-content">
       <div class="content">
-        Current Status: {{ lighting.deviceStatus }}
-        <br> Jobs enabled: {{ lighting.jobsEnabled }}
-        <br> On time: {{ getLocalTimeString(lighting.onTime) }}
-        <br> Off time: {{ getLocalTimeString(lighting.offTime) }}
+        <dl class="def-list">
+          <dt class="def-list-term">Current Status:</dt><dd class="def-list-desc">{{ lighting.deviceStatus }}</dd>
+          <dt class="def-list-term">Jobs enabled:</dt><dd class="def-list-desc">{{ lighting.jobsEnabled }}</dd>
+          <dt class="def-list-term">On time:</dt><dd class="def-list-desc">{{ getLocalTimeString(lighting.onTime) }}</dd>
+          <dt class="def-list-term">Off time:</dt><dd class="def-list-desc">{{ getLocalTimeString(lighting.offTime) }}</dd>
+        </dl>
+
+        <div class="buttons">
+          <a class="button is-primary is-medium" @click="controlLighting('on')">Turn On</a>
+          <a class="button is-medium" @click="controlLighting('off')">Turn Off</a>
+        </div>
       </div>
     </div>
-    <footer class="card-footer">
-      <a class="card-footer-item" @click="controlLighting('on')">Turn on</a>
-      <a class="card-footer-item" @click="controlLighting('off')">Turn off</a>
-    </footer>
-    <footer class="card-footer">
-      <a class="card-footer-item" @click="$emit('edit')">
-        <small>Edit</small>
-      </a>
-      <a class="card-footer-item" @click="$emit('delete')">
-        <small>Delete</small>
-      </a>
-    </footer>
+
   </div>
 </template>
 
@@ -48,6 +64,19 @@ export default {
     },
     getLocalTimeString (date) {
       return new Date(date).toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })
+    },
+    createDropdownId () {
+      return 'dropdown-menu-' + this.lighting.id
+    },
+    toggleDropdown (event) {
+      var parentPath = 0
+      var eventItemClasses = event.target.classList
+      if (eventItemClasses.contains('button')) {
+        parentPath = 2
+      } else if (eventItemClasses.contains('fa')) {
+        parentPath = 3
+      }
+      event.path[parentPath].classList.toggle('is-active')
     }
   }
 }

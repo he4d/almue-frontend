@@ -20,6 +20,48 @@
 }
 
 //
+// dropdown
+
+.dropdown {
+  .button {
+    &.is-text {
+      color: inherit;
+      border: none;
+      background-color: transparent;
+    }
+  }
+  @include mq(mobile-and-tablet) {
+    .dropdown-menu {
+      &:not(.is-hoverable) {
+        position: absolute;
+        transform: none;
+        -webkit-transform: none;
+        left: 0 !important;
+        top: 100% !important;
+        width: auto;
+        box-shadow: $dropdown-content-shadow;
+      }
+    }
+  }
+}
+//
+// def-list
+.def-list {
+  @include clearfix;
+  margin-bottom: 1em;
+
+  .def-list-term {
+    float: left;
+    clear: left;
+    min-width: 8em;
+  }
+  .def-list-desc {
+    float: left;
+    margin-left: 0.2em;
+  }
+}
+
+//
 // tabs
 .b-tabs {
   .tabs {
@@ -42,8 +84,35 @@
 // cards
 .card {
   .card-header {
+    color: $white;
+    background-color: $primary;
+
     .card-header-title {
+      color: inherit;
       word-break: break-all;
+      .dropdown {
+        &+h3 {
+          margin-left: 0.2em;
+        }
+      }
+    }
+  }
+  .card-content {
+    @include clearfix;
+    .buttons {
+      &.is-ctas {
+        float: left;
+        @include mq(mobile) {
+          float: none;
+          margin-bottom: 1em;
+        }
+      }
+      &.is-edas {
+        float: right;
+        @include mq(mobile) {
+          float: none;
+        }
+      }
     }
   }
 }

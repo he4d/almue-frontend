@@ -1,43 +1,60 @@
 <template>
-  <div class="card">
+  <div class="card shutter-card">
     <header class="card-header">
-      <h3 class="card-header-title">
-        {{ shutter.description }}
-      </h3>
+      <div class="card-header-title">
+        <div class="dropdown">
+          <div class="dropdown-trigger">
+            <a class="button is-text" aria-haspopup="true" :aria-controls="createDropdownId()" v-on:click="toggleDropdown">
+                <span class="fa fa-angle-down"></span>
+                <span class="sr-only">Menu</span>
+            </a>
+          </div>
+          <div class="dropdown-menu" :id="createDropdownId()" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item "@click="$emit('delete')">
+                <span class="fa fa-times"></span>
+                <span>Delete</span>
+              </a>
+              <a class="dropdown-item" @click="$emit('edit')">
+                <span class="fa fa-pencil"></span>
+                <span>Edit</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <h3>{{ shutter.description }}</h3>
+      </div>
       <p class="card-header-icon">
         <span class="icon">
-          <i class="fa fa-bars"></i>
+          <i class="fa fa-window-maximize"></i>
         </span>
       </p>
     </header>
     <div class="card-content">
       <div class="content">
-        Current Status:
-        <span class="tag is-success" v-if="shutter.deviceStatus !== 'stopped'">
-          {{ shutter.deviceStatus }}
-        </span>
-        <span class="tag" v-else>
-          {{ shutter.deviceStatus }}
-        </span>
-        <br> Opening: {{ shutter.openingInPrc }}%
-        <br> Jobs enabled: {{ shutter.jobsEnabled }}
-        <br> Open time: {{ getLocalTimeString(shutter.openTime) }}
-        <br> Close time: {{ getLocalTimeString(shutter.closeTime) }}
+        <dl class="def-list">
+          <dt class="def-list-term">Current Status:</dt>
+          <dd class="def-list-desc">
+            <span class="tag is-primary" v-if="shutter.deviceStatus !== 'stopped'">
+              {{ shutter.deviceStatus }}
+            </span>
+            <span class="tag" v-else>
+              {{ shutter.deviceStatus }}
+            </span>
+          </dd>
+          <dt class="def-list-term">Opening:</dt><dd class="def-list-desc">{{ shutter.openingInPrc }}%</dd>
+          <dt class="def-list-term">Jobs enabled:</dt><dd class="def-list-desc">{{ shutter.jobsEnabled }}</dd>
+          <dt class="def-list-term">Open time:</dt><dd class="def-list-desc">{{ getLocalTimeString(shutter.openTime) }}</dd>
+          <dt class="def-list-term">Close time:</dt><dd class="def-list-desc">{{ getLocalTimeString(shutter.closeTime) }}</dd>
+        </dl>
+
+        <div class="buttons is-ctas">
+          <a class="button is-primary is-medium" @click="controlShutter('open')">Open</a>
+          <a class="button is-medium" @click="controlShutter('close')">Close</a>
+          <a class="button is-medium" @click="controlShutter('stop')">Stop</a>
+        </div>
       </div>
     </div>
-    <footer class="card-footer">
-      <a class="card-footer-item" @click="controlShutter('open')">Open</a>
-      <a class="card-footer-item" @click="controlShutter('stop')">Stop</a>
-      <a class="card-footer-item" @click="controlShutter('close')">Close</a>
-    </footer>
-    <footer class="card-footer">
-      <a class="card-footer-item" @click="$emit('edit')">
-        <small>Edit</small>
-      </a>
-      <a class="card-footer-item" @click="$emit('delete')">
-        <small>Delete</small>
-      </a>
-    </footer>
   </div>
 </template>
 
@@ -56,6 +73,19 @@ export default {
     },
     getLocalTimeString (date) {
       return new Date(date).toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit', hour12: false })
+    },
+    createDropdownId () {
+      return 'dropdown-menu-' + this.shutter.id
+    },
+    toggleDropdown (event) {
+      var parentPath = 0
+      var eventItemClasses = event.target.classList
+      if (eventItemClasses.contains('button')) {
+        parentPath = 2
+      } else if (eventItemClasses.contains('fa')) {
+        parentPath = 3
+      }
+      event.path[parentPath].classList.toggle('is-active')
     }
   }
 }
