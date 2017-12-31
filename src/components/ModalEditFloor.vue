@@ -1,7 +1,7 @@
 <template>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Edit floor</p>
+      <h3 class="modal-card-title">Edit floor</h3>
     </header>
     <section class="modal-card-body">
       <div class="content">

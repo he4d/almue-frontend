@@ -2,15 +2,15 @@
   <div>
     <section class="hero has-text-centered">
       <div class="hero-head">
-        <h1 class="title">Manage Server</h1>
+        <h2 class="title">Manage Server</h2>
       </div>
       <div class="hero-body">
         <div class="container has-text-centered">
-        <h2 class="subtitle">Download Database Backup</h2>
+        <h3 class="subtitle">Download Database Backup</h3>
         <a class="button is-primary" :href="dbBackupPath">Download</a>
         <br/>
         <br/>
-        <h2 class="subtitle">Restart Server</h2>
+        <h3 class="subtitle">Restart Server</h3>
         <a class="button is-primary">Restart</a>
         </div>
       </div>

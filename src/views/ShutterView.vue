@@ -2,11 +2,11 @@
   <div id="shutter-view">
     <div v-if="floors.length !== 0">
       <div class="content has-text-centered">
-        <h1>Shutters</h1>
+        <h2>Shutters</h2>
       </div>
       <section class="section">
         <!-- TODO: Tabs are not responsive if more than two tabs are added !-->
-        <b-tabs class="block" position="is-centered">
+        <b-tabs class="block" type="is-boxed">
           <b-tab-item v-for="floor in floors" v-bind:key="floor.id" :label="floor.description">
             <section class="section">
               <div class="columns is-multiline level" v-if="floor.shutters === undefined ? false : floor.shutters.length > 0">
@@ -15,7 +15,7 @@
                 </div>
               </div>
               <div class="content has-text-centered" v-else>
-                <h1>No shutters on this floor</h1>
+                <h3>No shutters on this floor</h3>
               </div>
             </section>
             <section class="section">
@@ -35,9 +35,9 @@
     <div v-else-if="loaded">
       <section class="section">
         <div class="content has-text-centered">
-          <h1>
+          <h3>
             <router-link to="/manage/floors">Add some floors first..</router-link>
-          </h1>
+          </h3>
         </div>
       </section>
     </div>

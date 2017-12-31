@@ -1,7 +1,7 @@
 <template>
   <div id="floor-view">
       <div class="content has-text-centered">
-        <h1>Floors</h1>
+        <h2>Floors</h2>
       </div>
       <section class="section">
         <div class="columns is-multiline level">

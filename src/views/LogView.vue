@@ -3,7 +3,7 @@
     <section class="hero">
       <div class="hero-head">
         <div class="container">
-        <h1 class="title">Logfile</h1>
+        <h2 class="title">Logfile</h2>
         </div>
         </div>
 <div class="embed-container">

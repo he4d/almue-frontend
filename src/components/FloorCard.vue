@@ -1,9 +1,9 @@
 <template>
   <div class="card">
     <header class="card-header">
-      <p class="card-header-title">
+      <h3 class="card-header-title">
         {{ floor.description }}
-      </p>
+      </h3>
       <p class="card-header-icon">
         <span class="icon">
           <i class="fa fa-home"></i>
