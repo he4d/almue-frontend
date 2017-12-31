@@ -2,7 +2,7 @@
   <div id="lighting-view">
     <div v-if="floors.length !== 0">
       <div class="content has-text-centered">
-        <h1>Lightings</h1>
+        <h2>Lightings</h2>
       </div>
       <section class="section">
         <b-tabs class="block" position="is-centered">

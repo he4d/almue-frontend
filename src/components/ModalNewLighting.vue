@@ -2,7 +2,7 @@
   <div class="modal-card">
     <form action="">
       <header class="modal-card-head">
-        <p class="modal-card-title">Create lighting</p>
+        <h3 class="modal-card-title">Create lighting</h3>
       </header>
       <section class="modal-card-body">
         <b-field label="Description">
