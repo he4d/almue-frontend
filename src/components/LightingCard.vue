@@ -57,6 +57,18 @@ export default {
   props: ['lighting'],
   methods: {
     controlLighting (action) {
+      var target = event.target
+
+      target.classList.add('is-loading')
+      var controlShutterInterval = setInterval(function () {
+        if (action === 'on' || action === 'off') {
+          target.parentNode.childNodes.forEach(function (el) {
+            if (typeof el.classList !== 'undefined' && el.classList.contains('is-loading')) el.classList.remove('is-loading')
+          })
+          clearInterval(controlShutterInterval)
+        }
+      }, 500)
+
       controlLightingByAction(this.lighting.id, action).then((resp) => {
       }).catch((err) => {
         console.log(err)

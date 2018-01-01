@@ -66,6 +66,22 @@ export default {
   props: ['shutter'],
   methods: {
     controlShutter (action) {
+      var _this = this
+      var target = event.target
+      var openingCondition
+      if (action === 'open') openingCondition = 100
+      if (action === 'close') openingCondition = 0
+
+      target.classList.add('is-loading')
+      var controlShutterInterval = setInterval(function () {
+        if (_this.shutter.openingInPrc === openingCondition || action === 'stop') {
+          target.parentNode.childNodes.forEach(function (el) {
+            if (typeof el.classList !== 'undefined' && el.classList.contains('is-loading')) el.classList.remove('is-loading')
+          })
+          clearInterval(controlShutterInterval)
+        }
+      }, 200)
+
       controlShutterByAction(this.shutter.id, action).then((resp) => {
       }).catch((err) => {
         console.log(err)
