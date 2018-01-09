@@ -49,9 +49,9 @@
         </dl>
 
         <div class="buttons is-ctas">
-          <a class="button is-primary is-medium" @click="controlShutter('open')">Open</a>
-          <a class="button is-medium" @click="controlShutter('close')">Close</a>
-          <a class="button is-medium" @click="controlShutter('stop')">Stop</a>
+          <a class="button is-primary is-medium" @click="controlShutter('open', $event)">Open</a>
+          <a class="button is-medium" @click="controlShutter('close', $event)">Close</a>
+          <a class="button is-medium" @click="controlShutter('stop', $event)">Stop</a>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@ export default {
   name: 'shuttercard',
   props: ['shutter'],
   methods: {
-    controlShutter (action) {
+    controlShutter (action, event) {
       var _this = this
       var target = event.target
       var openingCondition

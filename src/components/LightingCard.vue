@@ -40,8 +40,8 @@
         </dl>
 
         <div class="buttons">
-          <a class="button is-primary is-medium" @click="controlLighting('on')">Turn On</a>
-          <a class="button is-medium" @click="controlLighting('off')">Turn Off</a>
+          <a class="button is-primary is-medium" @click="controlLighting('on', $event)">Turn On</a>
+          <a class="button is-medium" @click="controlLighting('off', $event)">Turn Off</a>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@ export default {
   name: 'lightingcard',
   props: ['lighting'],
   methods: {
-    controlLighting (action) {
+    controlLighting (action, event) {
       var target = event.target
 
       target.classList.add('is-loading')
