@@ -4,14 +4,14 @@
       <div class="card-header-title">
         <div class="dropdown">
           <div class="dropdown-trigger">
-            <a class="button is-text" aria-haspopup="true" :aria-controls="createDropdownId()" v-on:click="toggleDropdown">
+            <a class="button is-text" aria-haspopup="true" :aria-controls="createDropdownId()" @click="toggleDropdown">
                 <span class="fa fa-angle-down"></span>
                 <span class="sr-only">Menu</span>
             </a>
           </div>
           <div class="dropdown-menu" :id="createDropdownId()" role="menu">
             <div class="dropdown-content">
-              <a class="dropdown-item "@click="$emit('delete')">
+              <a class="dropdown-item" @click="$emit('delete')">
                 <span class="fa fa-times"></span>
                 <span>Delete</span>
               </a>
@@ -81,14 +81,11 @@ export default {
       return 'dropdown-menu-' + this.lighting.id
     },
     toggleDropdown (event) {
-      var parentPath = 0
-      var eventItemClasses = event.target.classList
-      if (eventItemClasses.contains('button')) {
-        parentPath = 2
-      } else if (eventItemClasses.contains('fa')) {
-        parentPath = 3
+      var parentNode = event.target.parentNode.parentNode
+      if (parentNode.className === 'dropdown-trigger') {
+        parentNode = parentNode.parentNode
       }
-      event.path[parentPath].classList.toggle('is-active')
+      parentNode.classList.toggle('is-active')
     }
   }
 }
