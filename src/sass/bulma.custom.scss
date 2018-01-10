@@ -25,10 +25,13 @@
 .dropdown {
   .button {
     &.is-text {
-      color: inherit;
+      color: black;
       border: none;
       background-color: transparent;
     }
+  }
+  .option {
+    color: black
   }
   @include mq(mobile-and-tablet) {
     .dropdown-menu {
@@ -39,7 +42,7 @@
         left: 0 !important;
         top: 100% !important;
         width: auto;
-        box-shadow: $dropdown-content-shadow;
+        // box-shadow: $dropdown-content-shadow;
       }
     }
   }

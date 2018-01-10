@@ -2,26 +2,20 @@
   <div class="card">
     <header class="card-header">
       <div class="card-header-title">
-        <div class="dropdown">
-          <div class="dropdown-trigger">
-            <a class="button is-text" aria-haspopup="true" :aria-controls="createDropdownId()" @click="toggleDropdown">
-                <span class="fa fa-angle-down"></span>
-                <span class="sr-only">Menu</span>
-            </a>
-          </div>
-          <div class="dropdown-menu" :id="createDropdownId()" role="menu">
-            <div class="dropdown-content">
-              <a class="dropdown-item" @click="$emit('delete')">
-                <span class="fa fa-times"></span>
-                <span>Delete</span>
-              </a>
-              <a class="dropdown-item" @click="$emit('edit')">
-                <span class="fa fa-pencil"></span>
-                <span>Edit</span>
-              </a>
-            </div>
-          </div>
-        </div>
+        <b-dropdown>
+          <button class="button is-text" slot="trigger">
+            <span class="fa fa-angle-down"></span>
+            <span class="sr-only">Menu</span>
+          </button>
+          <b-dropdown-option @click="$emit('delete')">
+            <span class="fa fa-times"></span>
+            <span>Delete</span>
+          </b-dropdown-option>
+          <b-dropdown-option @click="$emit('edit')">
+            <span class="fa fa-pencil"></span>
+            <span>Edit</span>
+          </b-dropdown-option>
+        </b-dropdown>
         <h3>{{ lighting.description }}</h3>
       </div>
       <p class="card-header-icon">
@@ -76,16 +70,6 @@ export default {
     },
     getLocalTimeString (date) {
       return new Date(date).toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })
-    },
-    createDropdownId () {
-      return 'dropdown-menu-' + this.lighting.id
-    },
-    toggleDropdown (event) {
-      var parentNode = event.target.parentNode.parentNode
-      if (parentNode.className === 'dropdown-trigger') {
-        parentNode = parentNode.parentNode
-      }
-      parentNode.classList.toggle('is-active')
     }
   }
 }
