@@ -5,7 +5,7 @@
         <h2>Lightings</h2>
       </div>
       <section class="section">
-        <b-tabs class="block" position="is-centered">
+        <b-tabs class="block" position="is-boxed">
           <b-tab-item v-for="floor in floors" v-bind:key="floor.id" :label="floor.description">
             <section class="section">
               <div class="columns is-multiline level" v-if="floor.lightings === undefined ? false : floor.lightings.length > 0">
@@ -14,7 +14,7 @@
                 </div>
               </div>
               <div class="content has-text-centered" v-else>
-                <h1>No Lightings on this floor</h1>
+                <h3>No Lightings on this floor</h3>
               </div>
             </section>
             <section class="section">
@@ -93,7 +93,8 @@ export default {
         component: ModalEditLighting,
         width: 400,
         props: {
-          lighting: deepClone
+          lighting: deepClone,
+          floors: this.floors
         }
       })
     },

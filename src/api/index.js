@@ -43,11 +43,6 @@ export function createFloor (floor) {
   return instance.post('floors', floor)
 }
 
-export function updateLighting (shutter) {
-  // TODO: spec
-  return true
-}
-
 export function updateShutter (shutter) {
   shutter.openPin = Number(shutter.openPin)
   shutter.closePin = Number(shutter.closePin)
@@ -65,6 +60,12 @@ export function createShutter (shutter) {
 export function createLighting (lighting) {
   lighting.switchPin = Number(lighting.switchPin)
   return instance.post('lightings', lighting)
+}
+
+export function updateLighting (lighting) {
+  lighting.switchPin = Number(lighting.switchPin)
+  lighting.description = lighting.description
+  return instance.put(`lightings/${lighting.id}`, lighting)
 }
 
 export function deleteFloorById (floorId) {

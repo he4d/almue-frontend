@@ -27,7 +27,15 @@
     <div class="card-content">
       <div class="content">
         <dl class="def-list">
-          <dt class="def-list-term">Current Status:</dt><dd class="def-list-desc">{{ lighting.deviceStatus }}</dd>
+          <dt class="def-list-term">Current Status:</dt>
+          <dd class="def-list-desc">
+            <span class="tag is-primary" v-if="lighting.deviceStatus !== 'off'">
+              {{ lighting.deviceStatus }}
+            </span>
+            <span class="tag" v-else>
+              {{ lighting.deviceStatus }}
+            </span>
+          </dd>
           <dt class="def-list-term">Jobs enabled:</dt><dd class="def-list-desc">{{ lighting.jobsEnabled }}</dd>
           <dt class="def-list-term">On time:</dt><dd class="def-list-desc">{{ getLocalTimeString(lighting.onTime) }}</dd>
           <dt class="def-list-term">Off time:</dt><dd class="def-list-desc">{{ getLocalTimeString(lighting.offTime) }}</dd>
@@ -69,7 +77,7 @@ export default {
       })
     },
     getLocalTimeString (date) {
-      return new Date(date).toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })
+      return new Date(date).toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit', hour12: false })
     }
   }
 }

@@ -5,7 +5,6 @@
         <h2>Shutters</h2>
       </div>
       <section class="section">
-        <!-- TODO: Tabs are not responsive if more than two tabs are added !-->
         <b-tabs class="block" type="is-boxed">
           <b-tab-item v-for="floor in floors" v-bind:key="floor.id" :label="floor.description">
             <section class="section">
