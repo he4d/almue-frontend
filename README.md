@@ -1,6 +1,6 @@
 # almue-frontend
 
-> Frontend for Almue
+> Frontend for [almue](https://github.com/he4d/almue) 
 
 ## Build Setup
 
